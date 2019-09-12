@@ -1,4 +1,4 @@
-﻿## Interface: 11302
+﻿﻿## Interface: 11302
 ## Title: BuffTimers
 ## Notes: Adds mini buff timers under the top right buff icons.
 

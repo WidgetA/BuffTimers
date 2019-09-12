@@ -20,24 +20,20 @@ local lWarned;
 --------------------------------------------------------------------------------------------------
 
 local function lSetTimeText(button, time)
-	local d, h, m, s;
-	local text;
-	
 	if( time <= 0 ) then
-		text = "";
-	elseif( time < 3600 ) then
-		d, h, m, s = ChatFrame_TimeBreakDown(time);
-		text = format("%02d:%02d", m, s);
+		button:SetText("");
+	elseif( time < 60 ) then
+		local d, h, m, s = ChatFrame_TimeBreakDown(time);
+		button:SetFormattedText("|c00FF0000%ds|r", s);
+	elseif( time < 600 ) then
+		local d, h, m, s = ChatFrame_TimeBreakDown(time);
+		button:SetFormattedText("|c00FF9B00%d:%02d|r", m, s);
+	elseif( time <= 3600 ) then
+		local d, h, m, s = ChatFrame_TimeBreakDown(time);
+		button:SetFormattedText("|c0000FF00%d:%02d|r", m, s);
 	else
-		text = "1 hr+";
+		button:SetText("|c0000FF001%d:%02d|r", m, s);
 	end
-	
-	button:SetText(text);
-end
-
-local function lGetField(name)
-	local s, e, number = string.find(name, "BuffButton(%d+)");
-	return getglobal("BuffTimer"..number.."Time");
 end
 
 
