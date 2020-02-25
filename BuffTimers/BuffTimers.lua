@@ -32,7 +32,8 @@ local function lSetTimeText(button, time)
 		local d, h, m, s = ChatFrame_TimeBreakDown(time);
 		button:SetFormattedText("|c0000FF00%d:%02d|r", m, s);
 	else
-		button:SetText("|c0000FF001%d:%02d|r", m, s);
+		local d, h, m, s = ChatFrame_TimeBreakDown(time);
+		button:SetFormattedText("|c0000FF00%d:%02d|r", d*24+h*60+m, s);
 	end
 end
 
